@@ -6,7 +6,7 @@ map.on('click','marker',(e)=>{
 	
 	var dataindex = data.features.findIndex(f=> f.properties.MARK_ID == e.features[0].properties.MARK_ID)
 	var value = data.features[dataindex].properties.value;
-	if(value == 4){
+	if(value == config.length-1){
 	  value = 0;
 	}else{
 	  value = value+1;

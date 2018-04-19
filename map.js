@@ -7,7 +7,13 @@ var map = new mapboxgl.Map({
 });
 
 map.doubleClickZoom.disable();
-
+var dynamicColor = ['match',['get','value']];
+	config.forEach((e,i)=>{
+		dynamicColor.push(i);
+		dynamicColor.push(e.color);
+	})
+	dynamicColor.push("grey");
+	
 database.ref('data').once('value').then((geojson)=>{
 	
 	data = geojson.val();
@@ -23,12 +29,7 @@ database.ref('data').once('value').then((geojson)=>{
 					},
 					'layout': {},
 					'paint': {
-						'fill-color': ['match',['get','value'],
-										1,'#1b9e77',
-										2,'#d95f02',
-										3,'#7570b3',
-										4,'#e7298a',
-										  '#66a61e'],
+						'fill-color': dynamicColor,
 						'fill-opacity': 0.8,
 						'fill-outline-color': '#000000'
 					}
