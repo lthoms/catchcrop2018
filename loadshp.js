@@ -24,7 +24,7 @@ mapdiv.addEventListener("drop", (e)=>{
 						'fill-outline-color': '#000000'
 					}
 				});
-				
+				console.log(geojson)
 				database.ref('data').set(geojson);
 			})
 		}
